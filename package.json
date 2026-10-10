@@ -1,0 +1,34 @@
+{
+  "name": "@xenial/oc-256k",
+  "version": "0.1.0",
+  "description": "Automatically compact OpenCode V2 sessions at 256,000 active context tokens.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xenial/oc-256k.git"
+  },
+  "homepage": "https://github.com/xenial/oc-256k#readme",
+  "bugs": { "url": "https://github.com/xenial/oc-256k/issues" },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["index.ts", "dist", "src", "README.md", "PLAN.md", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "pretest": "npm run build",
+    "test": "node --test test/*.test.mjs",
+    "test:local": "bun run test/local-entrypoint.mjs",
+    "verify": "npm test"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": { "@opencode/plugin": "~2.0.26" },
+  "devDependencies": { "@types/node": "^24.0.0", "typescript": "^5.8.2" }
+}
